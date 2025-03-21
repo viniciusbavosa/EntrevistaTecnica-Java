@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Perguntas</title>
+  <style>
+    body {
+      font-size: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <h1>
+    Perguntas técnicas - Nivel Junior
+  </h1>
+
+  <h2>
+    Back End
+  </h2>
+
+  <h3>
+    Explique o que é uma API.
+  </h3>
+
+  <p>
+    Uma API é um meio de comunicação entre um cliente e um servidor. Esse conceito é abrangente e pode ser interpretado da seguinte forma: Um cliente é algo que requisita informações e um servidor é algo que responde ao cliente com as informações requisitadas. Portanto, podem existir APIs que conectam aplicações na Web, como também podem existir APIs locais, que recebem um dado, o processam e devolvem esse dado a quem requisitou.
+  </p>
+  
+  <h3>
+    Quais são as principais diferenças entre um serviço e um programa na programação?
+  </h3>
+
+  <p>
+    Segundo a Teoria da computação, um <strong>programa de computador</strong> (<em>Turing Machine</em>) possui o seguinte comportamento: Ele recebe um input, retorna um output e então é encerrado.
+  </p>
+
+  <p>
+    Já um serviço é um <strong>tipo especial</strong> de programa que <strong>nunca é encerrado</strong>. Ele se mantem em execução contínua aguardando por requisições, geralmente através de uma rede, para atender a solicitações enviadas por clientes (como programas ou usuários).
+  </p>
+  
+  <span>
+    Exemplo de programa: Calculadora
+  </span>
+  <span>
+    Exemplo de serviços: Servidores
+  </span>
+
+  <p>
+    Embora essa explicação seja teórica, na prática esses dois conceitos muitas vezes se sobrepõem. Por exemplo, atualmente, diversos programas podem continuar em execução em segundo plano, aguardando interações do usuário.
+  </p>
+
+  <h3>
+    Como você implementaria autenticação em uma API?
+  </h3>
+
+  <p>
+    Utilizaria JWT como um token de acesso. Ao logar na aplicação, as informações do usuário seriam enviadas para um endpoint específico da minha API, onde seriam processadas, validadas e sanitizadas. Se forem válidas, a API retornará um <em>JWT access token</em> como cookie para o cliente. Após esse processo, a cada nova requisição feita por esse cliente válidado, o servidor irá verificar se o JWT enviado com o cookie é válido e então permitir acesso as páginas protegidas da aplicação.
+  </p>
+
+  <p>
+    Refresh Token
+  </p>
+
+  <h3>
+    Liste os principais métodos HTTP e seus usos.
+  </h3>
+
+  <ul>
+    <li>
+      <strong><code>GET</code></strong>: Solicita dados.
+    </li>
+    <li>
+      <strong><code>POST</code></strong>: Envia dados para o servidor, mas pode receber dados através do corpo da resposta.
+    </li>
+    <li>
+      <strong><code>PUT</code></strong>: Atualiza dados
+    </li>
+    <li>
+      <strong><code>DELETE</code></strong>: Deleta dados
+    </li>
+  </ul>
+
+  <h3>
+    Explique o conceito de <em>Concorrencia</em> e <em>Paralelismo</em>
+  </h3>
+
+  <p>
+    Concorrência é uma abordagem de execução de código bastante utilizada em linguagens <em>single-threaded</em>. Com ela, o sistema simula a execução de multíplas tarefas ao mesmo tempo, mas na realidade, o que está acontecendo é que o sistema operacional está utilizando um "agendador de tarefas". Quando o código é executado, o sistema operacional executa um pouquinho de cada tarefa e as alterna, simulando o paralelismo.
+    Esse comportamento permite que código assíncrono seja executado e não pause a execução do seu programa.
+  </p>
+
+  <p>
+    Já o paralelismo se refere a real execução de código simultaneo. Isso porque o parelismo utiliza o conceito de <em>multi-threaded</em>, delegando as tarefas síncronas e assíncronas a diferentes threads e as executando ao mesmo tempo.
+  </p>
+
+
+  <h3>
+    O que são estados na programação?
+  </h3>
+
+  <p>
+    Estado refere-se à capacidade de uma aplicação de "memorizar" (i.e., armazenar) dados ao longo do tempo, permitindo que determinados dados sejam mantidos e reutilizados em diversas operações durante a execução. Ele representa a condição atual de um sistema, variável, objeto ou componente, influenciando seu comportamento e as operações seguintes.
+  </p>
+
+  <h3>
+    O que é JSON?
+  </h3>
+
+  <p>
+    O JSON é um formato de serialização de dados. Ele é útil para troca de dados na web e em diversos outros campos da programação. O JSON substituiu o antigo XML por sua legibilidade e simplicidade, tanto para humanos quanto para máquinas. O JSON transforma objetos e estruturas de dados em texto planos, onde então podem ser enviados através do protocolo HTTP, por exemplo, e então desserializado. Além da web, JSON é utilizado em diversas áreas da programação, incluindo armazenamento de configurações, comunicação entre serviços e integração de APIs.
+  </p>
+
+  <h3>
+    O protocolo HTTP é um protocolo <em>stateless</em> ou <em>statefull</em>? Cite um exemplo de protocolo <em>stateless</em> e <em>statefull</em>
+  </h3>
+
+  <p>
+    O protocolo HTTP é <em>stateless</em>. Isso significa que cada requisição enviada por um cliente é tratada de forma independente, sem que o servidor mantenha informações sobre requisições anteriores. Como resultado, toda a informação necessária para processar a requisição precisa ser enviada junto a ela, pois o servidor não armazena o estado da comunicação entre diferentes requisições. Isso permite que requisições vindas do mesmo cliente possam ser atendidas por qualquer instância do serviço, garantindo escalabilidade e distribuição de carga.
+  </p>
+
+  <p>
+    O protocolo HTTP foi originalmente projetado para a comunicação entre navegadores e servidores web, para isso ele precisava ser leve, de fácil escalabilidade e eficiente. Para alcançar esse objetivo, ele foi desenvolvido de forma <em>stateless</em>.
+  </p>
+
+  <p>
+    O protocolo SMTP é um exemplo de protocolo com estado. Esse protocolo coordena transmissão de dados entre emails, clientes e servidores. Nele, a requisição passa por uma sequência de etapas (HELO, MAIL FROM, RCPT TO, DATA, QUIT), e <strong>e cada etapa depende do sucesso da anterior, exigindo que o servidor mantenha o contexto da sessão até que o e0mail seja totalmente transmitido</strong>. 
+  </p>
+
+  <h3>
+    Você tem experiência em construir APIs RESTful? Explique o conceito da Arquitetura REST
+  </h3>
+
+  <p>
+    Arquitetura REST é um conjunto de regras e princípios criado por <em>Roy Fielding</em>. Sua implementação padroniza a comunicação entre aplicações, tornando a troca de informação simples e efetiva. 
+  </p>
+
+  <p>
+    Em um sistema RESTful, o servidor não mantém estado entre as requisições (i.e <em>stateless</em>), o que significa que cada solicitação deve incluir todas as informações necessárias para que o servidor possa processá-la de forma independente. Normalmente, a comunicação ocorre por meio de JSON, embora outros formatos também possam ser utilizados.
+  </p>
+
+  <p>
+    Além disso, a arquitetura REST estabelece uma clara separação entre o cliente, que consome os recursos, e o servidor, que os fornece. Essa divisão permite que cada parte evolua de forma independente, contribuindo para a escalabilidade e a manutenção do sistema. Por fim, sistemas RESTful devem expor uma API consistente baseada na semântica dos métodos HTTP, como GET, POST, PUT e DELETE, concentrando-se na manipulação de recursos em vez de ações específicas, o que garante previsibilidade e consistência nas operações.
+  </p>
+
+  <h3>
+    O que é um <em>load balancer</em>?
+  </h3>
+
+  <p>
+    Load balancer é um tipo de proxy que pode se conectar a vários servidores. O seu trabalho consiste em controlar e distribuir o fluxo de requisições entre esses servidores para que não fiquem sobrecarregados.
+  </p>
+
+
+  <h3>
+    O que é idempotência? E como ela se relaciona a APIs RESTful?
+  </h3>
+
+  <p>
+    A idempotência refere-se à característica de uma operação em que <strong><mark>a execução repetida da mesma ação, com os mesmos parâmetros, terá sempre o mesmo efeito, independentemente de quantas vezes a ação seja realizada</mark></strong>. 
+  </p>
+
+  <p>
+    Como uma API RESTFul segue o protocolo HTTP, então ela também deve ser idempotênte. Isso significa que a API deve receber uma mesma requisição varias vezes e <strong><mark>sempre retornar a mesma resposta</mark></strong>, com exceção de requisições com método <code>POST</code> que não são idempotentes, 
+  </p>
+
+  <p>
+    Eu gosto de associar idempotência com o conceito de funções puras da programação funcional. Dado um input, o output deve ser o mesmo sempre.
+  </p>
+
+  <h2>
+    Java
+  </h2>
+
+  <h3>
+    Explique como o Java gerencia a memória e quais são as principais diferenças em relação a linguagens como C.
+  </h3>
+
+  <h3>
+    Java é uma linguagem fortemente influenciada pelo paradigma de Programação Orientada a Objetos. Fale um pouco sobre os conceitos de POO.
+  </h3>
+
+  <h3>
+    Quais são os modificadores de acesso em Java e suas funções?
+  </h3>
+
+  <h3>
+    O que o princípio <em>SOLID</em> representa?
+  </h3>
+  
+  <h3>
+    Quais são os tipos de dados primitivos
+  </h3>
+</body>
+</html>
