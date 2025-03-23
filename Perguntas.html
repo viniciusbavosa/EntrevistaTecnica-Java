@@ -176,20 +176,316 @@
     Explique como o Java gerencia a memória e quais são as principais diferenças em relação a linguagens como C.
   </h3>
 
+  <p>
+    O Java gerencia a memória através do coletor de lixo ou <em><strong>Garbage Collector</strong></em>(GC), que remove objetos não referenciados. Isso permite que o programador não precise se preocupar com o gerenciamento de memória. 
+  </p>
+
+  <p>
+    Em linguagens como C, o gerenciamento de memória é feito manualmente pelo desenvolvedor, alocando memória (<code>malloc, calloc, realloc</code>) e liberar (<code>free</code>) manualmente a memória, aumentando a chance de vazamentos e acessos inválidos.
+  </p>
+
+  <p>
+    Tanto Java, quanto C utilizam <em>Stack</em> e <em>Heap</em> para gerenciar memória, porém com algumas diferenças: 
+  </p>
+
+  <ul>
+    <li>
+      <strong>Java</strong>
+      <ul>
+        <li>Variáveis primitivas e referências a objetos são armazenadas na <em>Stack</em></li>
+        <li>Objetos são armazenados no <em>heap</em>, sendo liberados pelo GC quando não há mais referências a eles</li>
+      </ul>
+    </li>
+    <li>
+      <strong>C</strong>
+      <ul>
+        <li>Variáveis locais e ponteiros são armazenas na <em>Stack</em></li>
+        <li>Dados alocados dinamicamente (<code>malloc</code>) ficam no <em>heap</em>, precisando ser liberados manualmente</li>
+      </ul>
+    </li>
+  </ul>
+
   <h3>
     Java é uma linguagem fortemente influenciada pelo paradigma de Programação Orientada a Objetos. Fale um pouco sobre os conceitos de POO.
   </h3>
+
+  <h4>1. Classes e Objetos</h4>
+  <ul>
+    <li>Classes: São moldes ou “blueprints” que definem atributos (dados) e métodos (comportamentos) comuns a um conjunto de objetos.</li>
+    <li>Objetos: São instâncias das classes, representando entidades do mundo real com estados (valores dos atributos) e comportamentos (métodos).</li>
+  </ul>
+  
+  <h4>2. Encapsulamento</h4>
+  <p>Oculta os detalhes internos de uma classe, expondo apenas o necessário. Em Java, isso é feito utilizando modificadores de acesso como <code>private</code>, <code>protected</code> e <code>public</code> para proteger os dados e garantir um acesso controlado.</p>
+  
+  <h4>3. Herança</h4>
+  <p>Permite que uma classe “filha” herde atributos e métodos de uma classe “mãe”. Isso promove o reuso de código e facilita a criação de hierarquias, onde classes mais especializadas podem estender os comportamentos de classes mais gerais.</p>
+  
+  <h4>4. Polimorfismo</h4>
+  <p>Refere-se à capacidade de uma mesma operação se comportar de maneira diferente em classes distintas. Em Java, isso é frequentemente implementado através da sobrescrição (override) de métodos, possibilitando que uma chamada de método seja resolvida dinamicamente conforme o objeto que a recebe.</p>
+  
+  <h4>5. Abstração</h4>
+  <p>Consiste em representar os aspectos essenciais de um objeto, ignorando detalhes não relevantes. Em Java, classes abstratas e interfaces são usadas para definir contratos que especificam o que um objeto deve fazer, sem se preocupar com a implementação exata.</p>
+  
+  <p>Esses conceitos colaboram para a criação de sistemas modulares, reutilizáveis e de fácil manutenção, permitindo que os desenvolvedores mapeiem problemas do mundo real para soluções de software de forma mais eficaz.</p>
 
   <h3>
     Quais são os modificadores de acesso em Java e suas funções?
   </h3>
 
+  <ul>
+    <li>
+      <strong>Default (sem nenhum modificador)</strong>: O acesso é permitido apenas dentro do mesmo pacote
+    </li>
+    <li>
+      <strong>Private</strong>: O mais restritivo, membros privados são acessíveis somente dentro da classe onde foram declarados, nem mesmo classes do mesmo pacote podem acessá-los.
+    </li>
+    <li>
+      <strong>Protected</strong>: Podem ser acessados dentro do mesmo pacote ou subclasses de pacotes diferentes.
+    </li>
+    <li>
+      <strong>Public</strong>: Podem ser acessados de qualquer lugar do código.
+    </li>
+  </ul>
+
+  <h3>
+    O que são interfaces em Java e como elas se diferenciam de Classes?
+  </h3>
+
+  <p>
+    Em Java, uma interface é um tipo especial de estrutura que define <strong>um conjunto de métodos</strong> que uma classe deve implementar, sem fornecer nenhuma implementação real desses métodos (até o Java 8).
+  </p>
+
+  <p>
+    Enquanto classes podem conter atributos e métodos com implementação, interfaces servem apenas como um contrato que outras classes precisam seguir.
+  </p>
+
   <h3>
     O que o princípio <em>SOLID</em> representa?
   </h3>
+
+  <p>
+    O SOLID representa os 5 princípios de Java que são:
+
+    <ul>
+      <li>
+        S: Princípio de responsabilidade Única. Uma classe deve ter uma única responsabilidade.
+      </li>
+      <li>
+        O: Princípio do Aberto/Fechado. Um módulo deve estar <strong>aberto para extensão</strong>, mas <strong>fechado para modificação</strong>
+      </li>
+      <li>
+        L: Princípio da Substituição de Liskov. Subtipos/subclasses devem ser substituíveis por seus tipos base sem alterar o comportamento correto do programa. Por exemplo, temos uma classe <code>Retangulo</code>, uma classe <code>Quadrado</code> que a herda não deve quebrar o comportamento esperado.
+      </li>
+      <li>
+        I: Princípio da Segregação de Interfaces. Uma classe não deve ser forçada a implementar métodos que não utiliza.
+      </li>
+      <li>
+        D: Princípio da Inversão de Dependência. Módulos de alto nível não devem depender de módulos de baixo nível. Ambos devem depender de abstrações.
+      </li>
+    </ul>
+  </p>
   
   <h3>
     Quais são os tipos de dados primitivos
   </h3>
+
+  <p>
+    Em Java, os tipos primitivos são:
+  </p>
+  <ul>
+    <li>
+      <strong>Byte:</strong>
+      O tipo de dado <code>byte</code> é um inteiro que corresponde a 1 Byte ou 8 bits na memória do computador. Ele pode armazenar números em um intervalo de -128 a 127, pois o Java o armazena <strong>com sinal</strong>. Esse tipo de dado é útil para economizar memóri em matrizes grandes, onde a economia de memória é realmente necessária. Eles também podem ser usados no lugar de <code>int</code> pois seus limites (-128 a 127) ajudam a tornar o código mais claro.
+
+      Isso significa que, se você tiver uma variável que nunca precisará armazenar valores além desse intervalo, usar <code>byte</code> em vez de <code>int</code> pode deixar mais evidente para outros desenvolvedores que aquele valor tem um limite específico.
+    </li>
+    <li>
+      <strong>
+        Short:
+      </strong>
+      O tipo de dado <code>short</code> é um inteiro que corresponde a 2 Bytes ou 16 bits com sinal na memória do computador. Ele pode armazenar números em um intervalo de -32,768 a 32,767. Assim como em <code>byte</code>, você pode utilizar esse tipo de dado para economizar memória em matrizes, além de servir como documentação.
+    </li>
+    <li>
+      <strong>Int:</strong>
+      Por padrão, o tipo de dado <code>int</code> é um inteiro que corresponde a 4 Bytes ou 32 bits com sinal na memória do computador. Ele pode armazenar números em um intervalo de -2<sup>31</sup> a 2<sup>31</sup>-1, ou de −2.147.483.648 a 2.147.483.647.
+    </li>
+    <li>
+      <strong>Long:</strong>
+      O <code>long</code> é um inteiro que corresponde a 8 bytes ou 64 bits na memória do computador. Ele pode armazenar números em um intervalo de -2<sup>63</sup> a 2<sup>63</sup>-1, ou de -9.223.372.036.854.775.808 a 9.223.372.036.854.775.807.
+    </li>
+    <li>
+      <strong>Float:</strong>
+      Tipos de dado <code>float</code> são usados para representar números de ponto flutuante, ou seja, números que possuem casas decimais. Ele corresponde a 4 bytes ou 32 bits na memória do computador. Ele pode representar números em um intervalo de - 3.402823 x 10<sup>38</sup> a 3.402823 x 10<sup>38</sup>. O <code>float</code> possui uma precisão limitada a 7 dígitos decimais. Se for necessário uma maior precisão, utilize o tipo <code>double</code>. Nunca utilize esse tipo de dado para valores precisos, como valores monetários.
+    </li>
+    <li>
+      <strong>Double:</strong>
+      O tipo <code>double</code> é o padrão para representar números de ponto flutuante. Ele oferece maior precisão e maior intervalo de valores do que <code>float</code>. Um dado do tipo <code>double</code> ocupa 8 bytes ou 64 bits na memória e oferece uma precisão de 15 a 16 dígitos significativos. Assim como em <code>float</code>, não utilize esse tipo para valores monetários.
+    </li>
+    <li>
+      <strong>Boolean</strong>
+      O tipo <code>boolean</code> representa apenas dois valores: <strong>true</strong> e <strong>false</strong>. Segundo a documentação do Java, esse tipo representa 1 bit na memória, porém seu "tamanho" não é definido com precisão.
+    </li>
+    <li>
+      <strong>Char:</strong>
+      Um dado do tipo <code>char</code> representa um único caractere Unicode de 16 bits, o que significa que ele pode representar praticamente qualquer símbolo ou caractere de qualquer língua, como letras, números e outros caracteres especiais. Esse tipo ocupa 2 bytes ou 16 bits na memória. Seu intervalo de valores é de 0 a 65,535 (ou de \u0000 a \uffff em notação Unicode), representando os primeiros 65.536 caracteres do conjunto Unicode.
+    </li>
+  </ul>
+
+  <h3>
+    Me fale um pouco sobre a ordem de execução dos blocos de inicialização e construtores em Java.
+  </h3>
+
+  <p>
+    Em Java, a ordem de execução dos blocos de inicialização e dos contrutores segue uma sequência específica. A ordem de execução é importante para entender como o código é inicializado em uma classe e seus objetos.
+  </p>
+
+  <ul>
+    <h4>Ordem de Execução</h4>
+    <li>
+      <strong>Bloco de inicialização estático (Static Block)</strong> é executado uma única vez quando a classe é carregada pela primeira vez na memória pela JVM, ou seja, <strong>antes da criação de qualquer instância da classe</strong>. Blocos de inicialização são executados na mesma ordem em que aparecem no programa, mas antes do construtor da classe.
+    </li>
+    <li>
+      <strong>Blocos de inicialização de instâncias</strong> são executados <strong>sempre que uma nova instância da classe é criada.</strong> Ele é executado <strong>antes do construtor</strong> e após a criação do objeto (mas antes da execução do corpo do construtor). Esse bloco é útil para inicializações comuns que precisam ser feitas em todos os contrutores da classe.
+    </li>
+    <li>
+      <strong>Construtor da classe</strong> é executado após o bloco de inicialização de instância e é responsável por inicializar o objeto quando ele é criado.
+    </li>
+  </ul>
+
+  <h3>
+    Qual a diferença entre funções Lambda e Closures?
+  </h3>
+
+  <p>
+    Funções lambda foram introduzidas no Java 8 para simplificar o processo de criação de funções. Com elas, podemos declarar funções anonimas, ou seja, sem um nome, tipo de retorno e modificador de acesso definido.
+  </p>
+
+  <p>
+    Uma closure é uma função que "lembra" e mantem acesso ao escopo léxico onde foi declarada.
+  </p>
+
+  <h3>
+    Quais novas funções foram adicionadas no Java 8?
+  </h3>
+
+  <ul>
+    <li>Lambda Expressions − a new language feature allowing us to treat actions as objects</li>
+    <li>Method References − enable us to define Lambda Expressions by referring to methods directly using their names
+    </li>
+    <li>Optional − special wrapper class used for expressing optionality
+    </li>
+    <li>Functional Interface – an interface with maximum one abstract method; implementation can be provided using a Lambda Expression
+    </li>
+    <li>Default methods − give us the ability to add full implementations in interfaces besides abstract methods
+    </li>
+    <li>Nashorn, JavaScript Engine − Java-based engine for executing and evaluating JavaScript code
+    </li>
+    <li>Stream API − a special iterator class that allows us to process collections of objects in a functional manner
+    </li>
+    <li>Date API − an improved, immutable JodaTime-inspired Date API
+    </li>
+  </ul>
+
+  <span><a href="https://github.com/a11exe/java-interview/blob/main/questions/basic.md#basic-java-interview-questions" target="_blank">Clique aqui para ter acesso ao repositório original das perguntas acima.</a></span>
+
+  <h2>
+    Spring Boot
+  </h2>
+
+  <h3>
+    O que é Spring Boot?
+  </h3>
+
+  <p>
+    Spring Boot é um framework open-source que facilita o desenvolvimento de aplicações Java baseadas no Spring Framework. Ele foi projetado para simplificar a configuração e a inicialização de projetos, permitindo que os desenvolvedores criem aplicativos Java rapidamente, com o mínimo de configuração manual.
+  </p>
+
+  <p>
+    Principais características do Spring Boot:
+  </p>
+
+  <ul>
+    <li>
+      <strong>Configuração Automática</strong>: O Spring Boot fornece uma série de configurações automáticas que ajudam a reduzir a quantidade de configuração necessária. Com isso, o desenvolvedor pode se concentrar mais na lógica de negócios e menos em detalhes de configuração.
+    </li>
+    <li>
+      <strong>Aplicações Standalone</strong>: O Spring Boot permite criar aplicativos Java autossuficientes (standalone), sem a necessidade de um servidor de aplicação externo como o Tomcat ou o Jetty, pois ele já embute servidores de aplicação dentro do próprio projeto.
+    </li>
+    <li>
+      <strong>Dependências Gerenciadas</strong>: O Spring Boot inclui uma abordagem de dependências "starter", ou seja, pacotes de bibliotecas pré-configurados que ajudam a adicionar rapidamente funcionalidades ao projeto, como banco de dados, segurança e web services.
+    </li>
+    <li>
+      <strong>Rápida Inicialização</strong>: O Spring Boot é projetado para permitir o desenvolvimento rápido de aplicativos, com uma estrutura simplificada, o que é ideal para protótipos, MVPs e até mesmo soluções em produção.
+    </li>
+    <li>
+      <strong>Atendimento a Microserviços</strong>: Ele se adapta bem à arquitetura de microserviços, tornando o desenvolvimento e a implantação de sistemas distribuídos mais fácil.
+    </li>
+    <li>
+      <strong>Actuators</strong>: O Spring Boot inclui módulos de gerenciamento e monitoramento, chamados de "actuators", que fornecem métricas, informações sobre o estado da aplicação, logs, e muito mais.
+    </li>
+  </ul>
+
+  <p>
+    Com o Spring Boot, é possível criar desde simples APIs RESTful até sistemas mais complexos e escaláveis com segurança, persistência e integração com outros sistemas.
+  </p>
+
+  <h3>
+    Qual a finalidade do Spring Boot e como ele facilita o desenvolvimento de aplicações Java?
+  </h3>
+
+  <p>
+    O Spring Boot foi criado para simplificar e agilizar o desenvolvimento de aplicações Java baseadas no Spring Framework. Ele elimina a necessidade de configurações manuais complexas, oferecendo autoconfiguração e dependências agrupadas (starters) que permitem iniciar projetos rapidamente. Além disso, o Spring Boot permite a criação de aplicações standalone com servidores embutidos, o que facilita o processo de deploy e torna o desenvolvimento mais produtivo.
+  </p>
+
+  <h3>
+    Como o Spring Boot lida com diferentes perfis de ambiente (development, test, production) e como você os configura?
+  </h3>
+
+  <p>
+    O Spring Boot permite a criação de configurações específicas para diferentes ambientes por meio do conceito de perfis. Por exemplo, é possível definir arquivos como application-dev.properties e application-prod.properties, cada um com configurações apropriadas para o ambiente de desenvolvimento ou produção, respectivamente. O perfil ativo é especificado pela propriedade spring.profiles.active, possibilitando que a aplicação carregue automaticamente as configurações corretas conforme o ambiente em que está sendo executada.
+  </p>
+
+  <h3>
+    Como você integraria o Spring Security a uma aplicação Spring Boot para gerenciar autenticação e autorização?
+  </h3>
+
+  <p>
+    A integração do Spring Security em uma aplicação Spring Boot é feita adicionando a dependência spring-boot-starter-security, que traz uma série de configurações e filtros de segurança prontos para uso. A partir daí, é possível personalizar regras de autenticação e autorização por meio de classes de configuração anotadas com @EnableWebSecurity, definindo quais endpoints devem ser protegidos e como os usuários serão autenticados (por exemplo, através de um UserDetailsService). Isso garante que somente usuários autorizados possam acessar determinados recursos da aplicação.
+  </p>
+
+  <h3>
+    Como você gerencia logs em uma aplicação Spring Boot e quais práticas recomendadas utiliza para configurá-los?
+  </h3>
+
+  <p>
+    O Spring Boot utiliza, por padrão, o Logback como framework de logging, mas também suporta outros frameworks como Log4j2. A configuração de logs pode ser feita por meio do arquivo application.properties ou de um arquivo de configuração específico, como logback.xml. Entre as práticas recomendadas estão definir níveis de log apropriados para diferentes pacotes, configurar logs para diferentes ambientes (por exemplo, maior detalhamento em desenvolvimento e menos verbosidade em produção) e, quando necessário, integrar a aplicação com sistemas de gerenciamento centralizado de logs para facilitar o monitoramento e a análise de problemas.
+  </p>
+
+  <h3>
+    Qual a abordagem do Spring Boot para trabalhar com persistência de dados, por exemplo, usando Spring Data JPA e Hibernate?
+  </h3>
+
+  <p>
+    O Spring Boot simplifica o acesso e a manipulação de dados ao integrar o Spring Data JPA e o Hibernate de forma automática. Ao incluir a dependência spring-boot-starter-data-jpa, o framework configura automaticamente o EntityManager, o datasource e outras dependências necessárias. Os desenvolvedores podem definir entidades com anotações como @Entity e utilizar interfaces que estendem JpaRepository para realizar operações CRUD sem precisar implementar manualmente cada método, o que acelera o desenvolvimento e mantém o código mais limpo.
+  </p>
+
+  <h3>
+    De que forma o Spring Boot implementa a injeção de dependências e quais são as principais anotações utilizadas, como @Autowired, @Component, @Service e @Repository?
+  </h3>
+
+  <p>
+    O Spring Boot utiliza o contêiner de Inversão de Controle (IoC) do Spring para implementar a injeção de dependências. Com isso, classes anotadas com @Component, @Service, @Repository ou @Controller são automaticamente registradas como beans. A anotação @Autowired permite que o Spring resolva e injete essas dependências automaticamente em outras classes, promovendo um acoplamento baixo e facilitando a manutenção e os testes da aplicação.
+  </p>
+
+  <h3>
+    O que é o framework Spring? e o Spring Boot?
+  </h3>
+
+  <p>
+    O framework Spring é uma plataforma open-source para o desenvolvimento de aplicações em Java, projetada para facilitar a criação de sistemas corporativos robustos, escaláveis e de fácil manutenção. Ele promove conceitos fundamentais como a Inversão de Controle (IoC) e a Injeção de Dependências, que ajudam a desacoplar os componentes do sistema, tornando o código mais modular e testável. Além disso, o Spring oferece uma série de módulos que atendem a diferentes necessidades, como desenvolvimento web (Spring MVC), persistência de dados (Spring Data), segurança (Spring Security) e muito mais, permitindo a integração com diversas tecnologias e frameworks para a construção de soluções completas.
+  </p>
+
+
 </body>
 </html>
