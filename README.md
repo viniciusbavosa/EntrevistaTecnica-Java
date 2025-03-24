@@ -185,14 +185,21 @@ Entre as principais novidades do Java 8 estão:
 
 Spring Boot é um framework open-source que simplifica o desenvolvimento de aplicações Java baseadas no Spring Framework. Ele reduz a necessidade de configurações manuais e permite a criação de aplicações standalone, incorporando servidores de aplicação (como Tomcat ou Jetty) diretamente no projeto.
 
-### Qual a finalidade do Spring Boot e como ele facilita o desenvolvimento de aplicações Java?
+### Como você criaria um endpoint REST com Spring Boot?
 
-O Spring Boot foi criado para agilizar o desenvolvimento de aplicações Java. Ele oferece:
+Criamos um Controller usando @RestController e @RequestMapping.
 
-- **Configuração Automática:** Reduz a complexidade de configurações manuais.
-- **Dependências Gerenciadas (Starters):** Facilita a adição de funcionalidades (como banco de dados, segurança, etc.).
-- **Aplicações Standalone:** Elimina a necessidade de servidores externos, simplificando o deploy.
-- **Produtividade:** Permite iniciar rapidamente projetos e focar na lógica de negócio.
+```java
+  @RestController
+  @RequestMapping("/api")
+  public class MeuController {
+
+      @GetMapping("/hello")
+      public String hello() {
+          return "Olá, mundo!";
+      }
+  }
+```
 
 ### Como o Spring Boot lida com diferentes perfis de ambiente (development, test, production) e como você os configura?
 
@@ -218,10 +225,14 @@ Ao incluir a dependência `spring-boot-starter-data-jpa`, o Spring Boot configur
 
 O Spring Boot utiliza o contêiner de Inversão de Controle (IoC) do Spring para implementar a injeção de dependências. Classes anotadas com `@Component`, `@Service`, `@Repository` ou `@Controller` são automaticamente registradas como _beans_. A anotação `@Autowired` permite que o Spring injete essas dependências automaticamente em outras classes, promovendo um baixo acoplamento e facilitando a manutenção e os testes da aplicação.
 
-### O que é o framework Spring? E o Spring Boot?
+### Quais são as principais diferenças entre uma aplicação Spring tradicional e uma aplicação Spring Boot?
 
-O **framework Spring** é uma plataforma open-source para desenvolvimento de aplicações corporativas em Java, focada na Inversão de Controle (IoC) e Injeção de Dependências, o que ajuda a criar sistemas modulares e testáveis.  
-O **Spring Boot** é uma extensão do Spring que simplifica o processo de configuração e deploy, permitindo a criação de aplicações standalone com configurações mínimas e rápidas.
+| Característica    | Spring Tradicional             | Spring Boot                          |
+| ----------------- | ------------------------------ | ------------------------------------ |
+| Configuração      | Manual (XML ou Java)           | Automática                           |
+| Servidor embutido | ❌ Não                         | ✅ Sim (Tomcat, Jetty, Undertow)     |
+| Dependências      | Necessário configurar          | Usa Starters para simplificar        |
+| Arquivo principal | Precisa configurar manualmente | @SpringBootApplication cuida de tudo |
 
 ---
 

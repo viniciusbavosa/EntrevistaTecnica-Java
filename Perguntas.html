@@ -431,12 +431,26 @@
   </p>
 
   <h3>
-    Qual a finalidade do Spring Boot e como ele facilita o desenvolvimento de aplicações Java?
+    Como você criaria um endpoint REST com Spring Boot?
   </h3>
 
   <p>
-    O Spring Boot foi criado para simplificar e agilizar o desenvolvimento de aplicações Java baseadas no Spring Framework. Ele elimina a necessidade de configurações manuais complexas, oferecendo autoconfiguração e dependências agrupadas (starters) que permitem iniciar projetos rapidamente. Além disso, o Spring Boot permite a criação de aplicações standalone com servidores embutidos, o que facilita o processo de deploy e torna o desenvolvimento mais produtivo.
+    Criamos um Controller usando @RestController e @RequestMapping. Por exemplo:
   </p>
+
+  <code>
+    <pre>
+      @RestController
+      @RequestMapping("/api")
+      public class MeuController {
+
+          @GetMapping("/hello")
+          public String hello() {
+              return "Olá, mundo!";
+          }
+      }
+    </pre>
+  </code>
 
   <h3>
     Como o Spring Boot lida com diferentes perfis de ambiente (development, test, production) e como você os configura?
@@ -479,12 +493,41 @@
   </p>
 
   <h3>
-    O que é o framework Spring? e o Spring Boot?
+    Quais são as principais diferenças entre uma aplicação Spring tradicional e uma aplicação Spring Boot?
   </h3>
 
-  <p>
-    O framework Spring é uma plataforma open-source para o desenvolvimento de aplicações em Java, projetada para facilitar a criação de sistemas corporativos robustos, escaláveis e de fácil manutenção. Ele promove conceitos fundamentais como a Inversão de Controle (IoC) e a Injeção de Dependências, que ajudam a desacoplar os componentes do sistema, tornando o código mais modular e testável. Além disso, o Spring oferece uma série de módulos que atendem a diferentes necessidades, como desenvolvimento web (Spring MVC), persistência de dados (Spring Data), segurança (Spring Security) e muito mais, permitindo a integração com diversas tecnologias e frameworks para a construção de soluções completas.
-  </p>
+  <table>
+    <thead>
+      <tr>
+        <th>Característica</th>
+        <th>Spring Tradicional</th>
+        <th>Spring Boot</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Configuração</td>
+        <td>Manual (XML ou Java)</td>
+        <td>Automática</td>
+      </tr>
+      <tr>
+        <td>Servidor embutido</td>
+        <td>❌ Não</td>
+        <td>✅ Sim (Tomcat, Jetty, Undertow)</td>
+      </tr>
+      <tr>
+        <td>Dependências</td>
+        <td>Necessário configurar</td>
+        <td>Usa Starters para simplificar</td>
+      </tr>
+      <tr>
+        <td>Arquivo principal</td>
+        <td>Precisa configurar manualmente</td>
+        <td>@SpringBootApplication cuida de tudo</td>
+      </tr>
+    </tbody>
+  </table>
+  
 
 
 </body>
